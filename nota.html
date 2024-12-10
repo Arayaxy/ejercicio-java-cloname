@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evalua tu nota</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sevillana&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sevillana&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="nota.css" />
+  </head>
+  <body>
+    <header><h1>Cual es tu nota</h1></header>
+    <div class="content">
+      <div class="calcula_tu_media" id="calcula_tu_media">
+     <h3 id="texto">Calcula tu nota:</h3>
+      <input
+        type="text"
+        placeholder="Nombre"
+        id="nombre"
+        name="Nota"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Introduce tu nota"
+        id="nota1"
+        name="Nota"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Introduce tu nota"
+        id="nota3"
+        name="Nota"
+        required
+      />
+      <button id="calcular">Calcular Media</button>
+      </div>
+      <div class="num_perf" id="num_perf">
+        <h3 id="texto">Es numero perfecto</h3>
+      <input
+        type="text"
+        placeholder="Introduce el numero"
+        id="perfecto"
+        name="Nota"
+        required
+      />
+      <button id="nperfecto">Numero perfecto</button>
+      </div>
+      
+      <div id="informacion">
+        <h3 id="texto">Datos</h3>
+        <input id="nombres" type="text">
+        <input id="edad" type="number">
+        <button id="patata" type="button" onclicck="datos()">Datos</button>
+      </div>
+    </div>
+    <script src="nota.js"></script>
+  </body>
+</html>

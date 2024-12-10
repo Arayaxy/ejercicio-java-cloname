@@ -1,0 +1,238 @@
+/* ===========================
+    General Reset
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================
+    Global Variables
+=========================== */
+:root {
+  --font-main: "Poppins", sans-serif;
+  --font-title: "Lobster", cursive;
+
+  --color-background: #1e1e2f; /* Fondo oscuro */
+  --color-card-bg: #ffffff; /* Tarjetas claras */
+  --color-primary: #5c67ff; /* Azul vibrante */
+  --color-secondary: #ff5c67; /* Rojo coral */
+  --color-accent: #f3a712; /* Amarillo vibrante */
+  --color-text-light: #ffffff; /* Texto claro */
+  --color-text-dark: #222; /* Texto oscuro */
+  --color-shadow: rgba(0, 0, 0, 0.2);
+
+  --radius: 15px;
+  --transition-speed: 0.4s;
+}
+
+/* ===========================
+    Body Styling
+=========================== */
+body {
+  font-family: var(--font-main);
+  background: linear-gradient(120deg, #141e30, #243b55);
+  color: var(--color-text-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 30px;
+  overflow: hidden;
+}
+
+/* Background Animation */
+body::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 92, 103, 0.3), transparent 70%);
+  animation: rotateGradient 10s infinite linear;
+  z-index: -1;
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===========================
+    Header Styling
+=========================== */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeIn 1s ease-out;
+}
+
+header h1 {
+  font-family: var(--font-title);
+  font-size: 4rem;
+  color: var(--color-accent);
+  text-shadow: 0 4px 10px rgba(243, 167, 18, 0.5);
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: var(--color-text-light);
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+    Main Section Layout
+=========================== */
+.main-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  width: 100%;
+  animation: slideUp 1s ease-out;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+    Card Styling
+=========================== */
+.card {
+  background: var(--color-card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 15px var(--color-shadow);
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, var(--color-primary), var(--color-secondary));
+  transform: skewY(45deg);
+  transition: 0.4s ease-in-out;
+  z-index: 0;
+}
+
+.card:hover::before {
+  top: 0;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+  position: relative;
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  z-index: 1;
+}
+
+.card p {
+  position: relative;
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+/* ===========================
+    Button Styling
+=========================== */
+button {
+  padding: 15px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  background: linear-gradient(120deg, var(--color-primary), var(--color-secondary));
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition-speed), transform var(--transition-speed);
+  z-index: 1;
+  position: relative;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(120deg, var(--color-secondary), var(--color-primary));
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ===========================
+    Input Styling
+=========================== */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  margin-bottom: 15px;
+  outline: none;
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(92, 103, 255, 0.5);
+}
+
+/* ===========================
+    Responsiveness
+=========================== */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+}
+

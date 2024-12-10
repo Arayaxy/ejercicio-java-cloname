@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+/* Cuadrado */
+.square {
+    width: 200px;
+    height: 200px;
+    background-color: #3498db;
+}
+
+/* Círculo */
+.circle {
+    width: 200px;
+    height: 200px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+}
+
+/* Triángulo equilátero */
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 174px solid #2ecc71; 
+}
+
+/* Rectángulo */
+.rectangle {
+    width: 300px;
+    height: 200px;
+    background-color: #9b59b6;
+}

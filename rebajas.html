@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Descuentos</title>
+    <link rel="stylesheet" href="rebajas.css">
+</head>
+<body>
+    <div class="content">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape morado"></div>
+        <div class="shape amarillo"></div>
+    </div>
+    <div class="form"> 
+        <h3>Calcula tu descuento</h3>
+        <label for="precio">Precio inicial:</label>
+        <input
+            type="text"
+            placeholder="Introduce el precio inicial"
+            id="precio"
+            name="precio"
+            required
+        />
+        <label for="rebaja">Rebaja:</label>
+        <select name="rebaja" id="rebaja">
+            <option value="10">10%</option>
+            <option value="20">20%</option>
+            <option value="30">30%</option>
+            <option value="40">40%</option>
+            <option value="50">50%</option>
+        </select>
+        <button id="calcular">Calcular Descuento</button>
+        <p id="descuento"></p>
+    </div>
+    <script src="rebajas.js"></script>
+</body>
+</html>

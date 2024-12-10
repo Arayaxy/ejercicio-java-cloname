@@ -1,0 +1,220 @@
+:root {
+  --primary-blue: #1845ad;
+  --secondary-blue: #23a2f6;
+  --primary-orange: #ff512f;
+  --secondary-orange: #f09319;
+  --primary-purple: #9d50bb;
+  --secondary-purple: #6e48aa;
+  --primary-yellow: #ffef99;
+  --secondary-yellow: #ffe74d;
+  --background: linear-gradient(135deg, #252544, #404068);
+  --form-bg: rgba(32, 34, 50, 0.8); /* Azul oscuro semitransparente */
+  --form-border: rgba(255, 255, 255, 0.1);
+  --text-white: #ffffff;
+  --text-dark: #080710;
+}
+
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.content .shape {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  animation: movimientoCircular 10s infinite ease-in-out;
+}
+
+/* Estilos de los círculos */
+.shape:first-child {
+  background: linear-gradient(var(--primary-blue), var(--secondary-blue));
+  left: 10%;
+  top: 20%;
+}
+
+.shape:nth-child(2) {
+  background: linear-gradient(to right, var(--primary-orange), var(--secondary-orange));
+  right: 15%;
+  bottom: 25%;
+}
+
+.shape.morado {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  left: 70%;
+  top: 10%;
+  animation: giroExpandido 8s infinite ease-in-out;
+}
+
+.shape.amarillo {
+  background: linear-gradient(to top, var(--primary-yellow), var(--secondary-yellow));
+  right: 5%;
+  top: 40%;
+  animation: movimientoCircular 12s infinite reverse ease-in-out;
+}
+
+/* Formulario */
+.form {
+  height: 550px;
+  width: 90%; /* Adaptable */
+  max-width: 500px; /* Hasta 500px */
+  background-color: var(--form-bg);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--form-border);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+  z-index: 10;
+}
+
+.form h3 {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+  color: var(--text-white);
+}
+
+label {
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8); /* Blanco tenue */
+}
+
+input,
+select {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-dark);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border: 2px solid var(--secondary-blue);
+  box-shadow: 0 0 10px var(--secondary-blue);
+}
+
+button {
+  margin-top: 50px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+  border: none;
+  color: var(--text-white);
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: linear-gradient(90deg, #1a3d8f, #1f5fc4); /* Azul más brillante */
+  transform: scale(1.05); /* Ligera expansión */
+}
+
+p {
+  height: 50px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
+  padding: 10px;
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-white);
+  text-align: center;
+  animation: aparecer 0.5s ease-in-out;
+}
+
+/* Animaciones */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes movimientoCircular {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+  75% {
+    transform: translate(15px, 15px) scale(1.2);
+  }
+}
+
+@keyframes giroExpandido {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.3);
+  }
+}
+.rojo {
+  background: linear-gradient(135deg, #d84343, #e57373);
+}
+
+.azul {
+  background: linear-gradient(135deg, #1845ad, #1e6bca);
+}
+
+.verde {
+  background: linear-gradient(135deg, #1d976c, #3ddc97);
+}
+
+.morado {
+  background: linear-gradient(135deg, #9d50bb, #6e48aa);
+}
+
+.amarillo {
+  background: linear-gradient(135deg, #ffe74d, #ffef99);
+  color: #080710;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de Gestión de Tareas</title>
+    <link rel="stylesheet" href="tareas.css">
+</head>
+<body>
+    <h1 id="app-title" class="header">Aplicación de Gestión de Tareas</h1>
+    
+    <!-- Formulario de tareas -->
+    <form id="task-form">
+        <input type="text" id="task-name" class="input-field" placeholder="Ingrese una tarea">
+        <input type="date" id="task-date" class="input-field">
+        <select name="trabajadores" id="worker-select" class="dropdown">
+            <option value="Mario">Mario</option>
+            <option value="Esteban">Esteban</option>
+            <option value="Ayln">Ayln</option>
+            <option value="Natalia">Natalia</option>
+            <option value="Maria">Maria</option>
+            <option value="Cleia">Cleia</option>
+            <option value="Sara">Sara</option>
+            <option value="Dani">Dani</option>
+        </select>
+        <button type="submit">Agregar Tarea</button>
+    </form>
+
+    <!-- Contenedor para las tablas -->
+    <div id="table-container"></div>
+
+    <script src="tareas.js"></script>
+</body>
+</html>
