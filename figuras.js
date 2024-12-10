@@ -1,12 +1,8 @@
-document.getElementById("visualizar").addEventListener("click", () => {
-   
-    
-    
-
-})
+document.getElementById("square").addEventListener("click", () => {
+    document.getElementById("visualizar_cuadrado").className = "";
 
 
-
+});
 
 
 console.log("____________________** JSON JavaScript Trigonometria **_________________________________________ ")
@@ -17,7 +13,7 @@ console.log("____________________** JSON JavaScript Trigonometria **____________
 
 function circulo(radio){
     const PI=3.14;
-    perimetro_circulo=2*pi*radio;
+    perimetro_circulo=2*PI*radio;
     area_circulo=pi*radio**2;
 }
 circulo(2);

@@ -37,3 +37,9 @@ body {
     height: 200px;
     background-color: #9b59b6;
 }
+
+
+.visualizar {
+    visibility: hidden;
+}
+
