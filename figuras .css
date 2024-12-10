@@ -7,6 +7,14 @@ body {
     background-color: #f0f0f0;
 }
 
+/* Grupo de forma y controles */
+.shape-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 /* Cuadrado */
 .square {
     width: 200px;
@@ -36,4 +44,12 @@ body {
     width: 300px;
     height: 200px;
     background-color: #9b59b6;
+}
+
+/* Estilo para la sección de inputs y botones */
+.visualizar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
