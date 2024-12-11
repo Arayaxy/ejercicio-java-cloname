@@ -46,8 +46,3 @@ console.log(`El perimetro del rectangulo es ${perimetro_rectangulo.toFixed(2)} y
 
 
 
-
-
-
-
-
