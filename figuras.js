@@ -1,3 +1,35 @@
+function togglefigure() {
+    // Selecciona el elemento con la clase "visualizar"
+    const visualizarDiv = document.querySelector('.visualizar');
+    // Alterna la clase "show" en este elemento
+    if (visualizarDiv) {
+        visualizarDiv.classList.toggle('show');
+    }
+}
+function togglefigure2() {
+    // Selecciona el elemento con la clase "visualizar"
+    const visualizarDiv = document.querySelector('.visualizar2');
+    // Alterna la clase "show" en este elemento
+    if (visualizarDiv) {
+        visualizarDiv.classList.toggle('show');
+    }
+}
+function togglefigure3() {
+    // Selecciona el elemento con la clase "visualizar"
+    const visualizarDiv = document.querySelector('.visualizar3');
+    // Alterna la clase "show" en este elemento
+    if (visualizarDiv) {
+        visualizarDiv.classList.toggle('show');
+    }
+}
+function togglefigure4() {
+    // Selecciona el elemento con la clase "visualizar"
+    const visualizarDiv = document.querySelector('.visualizar4');
+    // Alterna la clase "show" en este elemento
+    if (visualizarDiv) {
+        visualizarDiv.classList.toggle('show');
+    }
+}
 document.getElementById("visualizar").addEventListener("click", () => {
    
     
@@ -43,6 +75,21 @@ function rectangulo(x, y){
 }
 rectangulo(2,4);
 console.log(`El perimetro del rectangulo es ${perimetro_rectangulo.toFixed(2)} y el area ${area_rectangulo.toFixed(2)}`)
+
+
+
+
+//----------------codigo de togle de menu hamburguesa antes de adpatarlo a nuestro codigo
+
+// <button class="menu-btn"  onclick="toggleMenu()">☰</button>
+// function toggleMenu() { 
+//     document.querySelector('nav').classList.toggle('show'); 
+// }
+//nav.show {
+//     display: flex;
+//     flex-direction: row; 
+//     margin-left: -2em;
+// }
 
 
 
