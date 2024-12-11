@@ -4,6 +4,16 @@ document.getElementById("square").addEventListener("click", () => {
 
 });
 
+document.getElementById("triangle").addEventListener("click", () => {
+    document.getElementById("visualizar_triangle").className = "";
+
+})
+
+document.getElementById("triangle").addEventListener("click", () => {
+    document.getElementById("visualizar_").className = "";
+
+})
+
 
 console.log("____________________** JSON JavaScript Trigonometria **_________________________________________ ")
 //radio=2; //circulo
