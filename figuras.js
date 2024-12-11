@@ -69,12 +69,33 @@ function cuadrado(l){
 cuadrado(2);
 console.log(`El perimetro del cuadrado es ${perimetro_cuadrado.toFixed(2)} y el area ${area_cuadrado.toFixed(2)}`)
 
-function rectangulo(x, y){
-    perimetro_rectangulo=2*x+2*y;
-    area_rectangulo=x*y;
+function rectangulo(x, y) {
+    return {
+        perimetro: 2 * x + 2 * y,
+        area: x * y
+    };
 }
-rectangulo(2,4);
-console.log(`El perimetro del rectangulo es ${perimetro_rectangulo.toFixed(2)} y el area ${area_rectangulo.toFixed(2)}`)
+
+// Función cuadrado
+function calcular() {
+    const ancho = parseFloat(document.getElementById('ancho_rectangle').value);
+    const largo = parseFloat(document.getElementById('largo_rectangle').value);
+
+    if (isNaN(ancho) || isNaN(largo)) {
+        alert("Introduce valores numéricos válidos.");
+        return;
+    }
+
+    const { perimetro, area } = rectangulo(ancho, largo);
+
+    // Mostrar el resultado debajo del botón
+    const resultadoContainer = document.querySelector('.visualizar4');
+    resultadoContainer.classList.add('result');
+    resultadoContainer.innerHTML += `
+        <p>Perímetro: <strong>${perimetro.toFixed(2)}</strong></p>
+        <p>Área: <strong>${area.toFixed(2)}</strong></p>
+    `;
+}
 
 
 
