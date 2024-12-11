@@ -68,11 +68,11 @@ function triangulo(a){
 triangulo(2);
 console.log(`El perimetro del triangulo es ${perimetro_triangulo.toFixed(2)} y el area ${area_triangulo.toFixed(2)}`)
 
-<<<<<<< HEAD
+
 function rectangulo(x, y){
     perimetro_rectangulo=2*x+2*y;
     area_rectangulo=x*y;
-=======
+}
 function cuadrado(l){
     perimetro_cuadrado=4*l;
     area_cuadrado=l**2;
@@ -106,7 +106,6 @@ function calcular() {
         <p>Perímetro: <strong>${perimetro.toFixed(2)}</strong></p>
         <p>Área: <strong>${area.toFixed(2)}</strong></p>
     `;
->>>>>>> ca2d6648b6f0822e4a9bf1c1366b93cc507aed45
 }
 
 
