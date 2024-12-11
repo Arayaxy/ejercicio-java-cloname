@@ -1,3 +1,4 @@
+//---------------funciones de mostrar u ocultar los inputs para introducir valores
 function togglefigure() {
     //Selecciona el elemento con la clase "visualizar"
     const visualizarDiv = document.querySelector('.visualizar');
@@ -31,53 +32,34 @@ function togglefigure4() {
     }
 }
 
+//-----------funciones de calcular y pintar el resultado--------------
 
-// document.getElementById("square").addEventListener("click", () => {
-//     document.getElementById("visualizar").className = "";
+const num_radio = document.getElementById("radio")
+var calcular_radio = document.getElementById("cal_r");
+const nuevo_hijo = document.getElementById("circulo");
 
-// });
+calcular_radio.addEventListener("click", () => {
+    nuevo_hijo.innerHTML = circulo()
+    nuevo_hijo.classList.add('circulo_hijo')
+});
 
-document.getElementById("calcular").addEventListener("click", () => {
-    var valor = Number(document.getElementById("lado_square").value);
-    console.log(valor);
-    if (isNaN(valor)){
-        alert ("Por favor introduce un caracter numérico")
+function circulo() {
+    const radio1 = Number(num_radio.value);
+    const PI = 3.14;
+    const per_circulo = 2 * PI * radio1;
+    const area_circulo = PI * (radio1 ** 2);
+
+    if (isNaN(radio1)) {
+        alert ("Por favor Introduce un caracter numérico");
     }
-    else if (valor){
-        cuadrado(valor); 
-        const result=document.createElement("div");
-        result.innerHTML =`<p>El perimetro del cuadrado es ${perimetro_cuadrado.toFixed(2)} y el area ${area_cuadrado.toFixed(2)}</p>`;
-        document.getElementById("shape-container").appendChild(result); 
-        result.classList.add('result_square');
-        return;
+    else {
+        let resultado = `<p>el perimetro del circulo es: ${per_circulo}
+        y el area es: ${area_circulo}</p>`
+       return resultado;
     }
-    else{
-        alert("Completa los campos");
-    }
-    
- });
 
-console.log("____________________** JSON JavaScript Trigonometria **_________________________________________ ")
-//radio=2; //circulo
-//a=3;     //triangulo equilatero
-//l=5;     //cuadrado
-//x=2;y=3; //rectangulo
-
-function cuadrado(l){
-    perimetro_cuadrado=4*l;
-    area_cuadrado=l**2;
 }
-cuadrado(2);
-console.log(`El perimetro del cuadrado es ${perimetro_cuadrado.toFixed(2)} y el area ${area_cuadrado.toFixed(2)}`)
 
-
-function circulo(radio){
-    const PI=3.14;
-    perimetro_circulo=2*PI*radio;
-    area_circulo=PI*radio**2;   
-}
-circulo(2);
-console.log(`El perimetro del circulo es ${perimetro_circulo.toFixed(2)} y el area ${area_circulo.toFixed(2)}`)
 
 function triangulo(a){
     perimetro_triangulo=3*a;
@@ -85,6 +67,7 @@ function triangulo(a){
 }
 triangulo(2);
 console.log(`El perimetro del triangulo es ${perimetro_triangulo.toFixed(2)} y el area ${area_triangulo.toFixed(2)}`)
+
 
 
 function rectangulo(x, y){
