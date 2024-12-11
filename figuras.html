@@ -7,29 +7,37 @@
     <link rel="stylesheet" href="figuras .css" />
   </head> 
   <body>
-    <div class="shape-container">
-      <div id="square" class="square"></div>
-      <div class="visualizar" id="visualizar_cuadrado">
+    <div id="shape-container" class="shape-container">
+      <div class="square" onclick="togglefigure()"></div>
+      <div class="visualizar">
         <input id="lado_square" type="text" placeholder="Lado" />
+        <button id="calcular">Calcular</button>
+      </div>
+    </div>
+    <div class="shape-container">
+      <div class="circle" onclick="togglefigure2()"></div>
+      <div class="visualizar2">
+        <input id="radio" type="text" placeholder="Radio" />
         <button>Calcular</button>
       </div>
     </div>
-    <div class="circle"></div>
-    <div class="visualizar">
-        <input id="lado_circle" type="text">
-          <button>Calcular</button>
-        </div>
-    <div class="triangle"></div>
-    <div class="visualizar">
-        <input id="lado_triangle" type="text">
+
+    <div class="shape-container">
+      <div class="triangle" onclick="togglefigure3()"></div>
+      <div class="visualizar3">
+        <input id="base_triangle" type="text" placeholder="Base" />
         <button>Calcular</button>
-        </div>
-    <div class="rectangle"></div>
-    <div class="visualizar">
-        <input id="ancho" type="text">
-        <input id="largo" type="text">
-          <button>Calcular</button>
-        </div>
+      </div>
+    </div>
+
+    <div class="shape-container">
+      <div class="rectangle" onclick="togglefigure4()"></div>
+      <div class="visualizar4">
+        <input id="ancho_rectangle" type="text" placeholder="Ancho" />
+        <input id="largo_rectangle" type="text" placeholder="Largo" />
+        <button>Calcular</button>
+      </div>
+    </div>
 
     <script src="figuras.js"></script>
   </body>

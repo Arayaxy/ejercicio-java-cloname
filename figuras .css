@@ -47,9 +47,39 @@ body {
 }
 
 /* Estilo para la sección de inputs y botones */
-.visualizar {
+.visualizar, .visualizar2, .visualizar3, .visualizar4 {
+    display: none;
+}
+.visualizar.show {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
+}
+
+.visualizar2.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.visualizar3.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.visualizar4.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.result_square{
+    display: flex;
+    width: 100%;
+    background-color: #3498db;
 }
