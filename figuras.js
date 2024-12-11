@@ -1,8 +1,8 @@
 //---------------funciones de mostrar u ocultar los inputs para introducir valores
 function togglefigure() {
-    // Selecciona el elemento con la clase "visualizar"
+    //Selecciona el elemento con la clase "visualizar"
     const visualizarDiv = document.querySelector('.visualizar');
-    // Alterna la clase "show" en este elemento
+    //Alterna la clase "show" en este elemento
     if (visualizarDiv) {
         visualizarDiv.classList.toggle('show');
     }
@@ -68,6 +68,11 @@ function triangulo(a){
 triangulo(2);
 console.log(`El perimetro del triangulo es ${perimetro_triangulo.toFixed(2)} y el area ${area_triangulo.toFixed(2)}`)
 
+<<<<<<< HEAD
+function rectangulo(x, y){
+    perimetro_rectangulo=2*x+2*y;
+    area_rectangulo=x*y;
+=======
 function cuadrado(l){
     perimetro_cuadrado=4*l;
     area_cuadrado=l**2;
@@ -75,12 +80,34 @@ function cuadrado(l){
 cuadrado(2);
 console.log(`El perimetro del cuadrado es ${perimetro_cuadrado.toFixed(2)} y el area ${area_cuadrado.toFixed(2)}`)
 
-function rectangulo(x, y){
-    perimetro_rectangulo=2*x+2*y;
-    area_rectangulo=x*y;
+function rectangulo(x, y) {
+    return {
+        perimetro: 2 * x + 2 * y,
+        area: x * y
+    };
 }
-rectangulo(2,4);
-console.log(`El perimetro del rectangulo es ${perimetro_rectangulo.toFixed(2)} y el area ${area_rectangulo.toFixed(2)}`)
+
+// Función cuadrado
+function calcular() {
+    const ancho = parseFloat(document.getElementById('ancho_rectangle').value);
+    const largo = parseFloat(document.getElementById('largo_rectangle').value);
+
+    if (isNaN(ancho) || isNaN(largo)) {
+        alert("Introduce valores numéricos válidos.");
+        return;
+    }
+
+    const { perimetro, area } = rectangulo(ancho, largo);
+
+    // Mostrar el resultado debajo del botón
+    const resultadoContainer = document.querySelector('.visualizar4');
+    resultadoContainer.classList.add('result');
+    resultadoContainer.innerHTML += `
+        <p>Perímetro: <strong>${perimetro.toFixed(2)}</strong></p>
+        <p>Área: <strong>${area.toFixed(2)}</strong></p>
+    `;
+>>>>>>> ca2d6648b6f0822e4a9bf1c1366b93cc507aed45
+}
 
 
 
