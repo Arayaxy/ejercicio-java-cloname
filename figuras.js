@@ -32,6 +32,28 @@ function togglefigure4() {
     }
 }
 
+// CUADRADO *********************************************************
+document.getElementById("calcular").addEventListener("click", () => {
+    var valor = Number(document.getElementById("lado_square").value);
+    console.log(valor);
+    if (isNaN(valor)){
+        alert ("Por favor introduce un caracter numérico")
+    }
+    else if (valor){
+        cuadrado(valor); 
+        const result=document.createElement("div");
+        result.innerHTML =`<p>El perimetro del cuadrado es ${perimetro_cuadrado.toFixed(2)} y el area ${area_cuadrado.toFixed(2)}</p>`;
+        document.getElementById("shape-container").appendChild(result); 
+        result.classList.add('result_square');
+        return;
+    }
+    else{
+        alert("Completa los campos");
+    }
+    
+ });
+
+
 //-----------funciones de calcular y pintar el resultado--------------
 
 const num_radio = document.getElementById("radio")
