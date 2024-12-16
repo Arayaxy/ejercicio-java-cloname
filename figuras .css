@@ -20,6 +20,7 @@ body {
     width: 200px;
     height: 200px;
     background-color: #3498db;
+    cursor: pointer;
 }
 
 /* Círculo */
@@ -28,8 +29,11 @@ body {
     height: 200px;
     background-color: #e74c3c;
     border-radius: 50%;
+    cursor: pointer;
 }
-
+.circulo_hijo {
+    background-color: #2ecc71;
+}
 /* Triángulo equilátero */
 .triangle {
     width: 0;
@@ -37,6 +41,7 @@ body {
     border-left: 100px solid transparent;
     border-right: 100px solid transparent;
     border-bottom: 174px solid #2ecc71; 
+    cursor: pointer;
 }
 
 /* Rectángulo */
@@ -44,6 +49,7 @@ body {
     width: 300px;
     height: 200px;
     background-color: #9b59b6;
+    cursor: pointer;
 }
 
 /* Estilo para la sección de inputs y botones */
@@ -76,5 +82,11 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 5px;
+}
+
+.result_square{
+    display: flex;
+    width: 100%;
+    background-color: #3498db;
 }
 .result{color: #e74c3c;}
