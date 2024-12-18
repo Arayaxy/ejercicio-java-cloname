@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <form id="registro">
+    <lebel for="nombre">Nombre:</lebel>
+    <input type="text" id="nombre" required>
+    <lebel for="edad">Edad:</lebel>
+    <input type="number" id="edad" min="18" max="80" required>
+    <button type="submit">Enviar</button>
+   </form> 
+   <script>
+    const form = document.getElementById('registro');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const edad = document.getElementById('edad').value;
+        if (edad < 18 ){
+            alert('Debes tener al menos 18 años para registrarte');
+        }
+        else if (edad > 80){
+            alert('Expired')
+        }
+         else {
+            alert('Formulario enviado con exito');
+        }
+    })
+   </script>
+</body>
+</html>
