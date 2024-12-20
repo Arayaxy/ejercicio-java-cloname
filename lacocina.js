@@ -1,12 +1,15 @@
 const titulo_receta = document.getElementById("titulo_receta");
 const ingredientes = document.getElementById("ingredientes");
 const preparacion = document.getElementById("preparacion");
-const boton = document.getElementById("send");
+const form = document.getElementById("form_receta"); // Agrega un ID al formulario
 
 var mi_receta = JSON.parse(localStorage.getItem("recetas")) || [];
 
-// Escuchar el clic en el botón
-boton.addEventListener("click", () => {
+// Escuchar el evento de envío del formulario
+form.addEventListener("submit", (event) => {
+    // Prevenir la recarga del formulario
+    event.preventDefault();
+
     // Obtener los valores de los campos
     const titRecetaValue = titulo_receta.value.trim();
     const ingredientesValue = ingredientes.value.trim();
