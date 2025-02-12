@@ -1,34 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicación de Gestión de Tareas</title>
-    <link rel="stylesheet" href="tareas.css">
+    <title>TaskFlow - Gestor de Tareas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/tareas.css">
 </head>
 <body>
-    <h1 id="app-title" class="header">Aplicación de Gestión de Tareas</h1>
-    
-    <!-- Formulario de tareas -->
-    <form id="task-form">
-        <input type="text" id="task-name" class="input-field" placeholder="Ingrese una tarea">
-        <input type="date" id="task-date" class="input-field">
-        <select name="trabajadores" id="worker-select" class="dropdown">
-            <option value="Mario">Mario</option>
-            <option value="Esteban">Esteban</option>
-            <option value="Ayln">Ayln</option>
-            <option value="Natalia">Natalia</option>
-            <option value="Maria">Maria</option>
-            <option value="Cleia">Cleia</option>
-            <option value="Sara">Sara</option>
-            <option value="Dani">Dani</option>
-        </select>
-        <button type="submit">Agregar Tarea</button>
-    </form>
+    <div class="contenedor">
+        <header class="encabezado">
+            <h1 class="titulo-app">
+                <i class="fas fa-tasks"></i>
+                TaskFlow
+            </h1>
+        </header>
 
-    <!-- Contenedor para las tablas -->
-    <div id="table-container"></div>
+        <form id="formularioTarea" class="formulario-tarea">
+            <div class="grupo-formulario">
+                <input type="text" id="tituloTarea" name="titulo" class="entrada-formulario" placeholder="Título de la tarea" required>
+            </div>
+            <div class="grupo-formulario">
+                <input type="date" id="fechaTarea" name="fecha" class="entrada-formulario" required>
+            </div>
+            <div class="grupo-formulario">
+                <select id="trabajadorTarea" name="trabajador" class="entrada-formulario" required>
+                    <option value="">Seleccionar trabajador</option>
+                    <option value="Mario">Mario</option>
+                    <option value="Esteban">Esteban</option>
+                    <option value="Ayln">Ayln</option>
+                    <option value="Natalia">Natalia</option>
+                </select>
+            </div>
+            <div class="grupo-formulario">
+                <select id="estadoTarea" name="estado" class="entrada-formulario" required>
+                    <option value="pendiente">Por hacer</option>
+                    <option value="progreso">En progreso</option>
+                    <option value="completado">Completado</option>
+                </select>
+            </div>
+            <button type="submit" class="boton boton-primario">
+                <i class="fas fa-plus"></i>
+                Crear Tarea
+            </button>
+        </form>
 
-    <script src="tareas.js"></script>
+        <div id="contenedorTableros" class="contenedor-tableros"></div>
+    </div>
+
+    <div id="notificacion" class="notificacion">
+        <i class="fas fa-check-circle"></i>
+        <span class="mensaje-notificacion"></span>
+    </div>
+
+    <script src="js/tareas.js"></script>
 </body>
 </html>

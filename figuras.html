@@ -1,45 +1,328 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formas Geométricas</title>
-    <link rel="stylesheet" href="css\figuras .css" />
-  </head> 
-  <body>
-    <div id="shape-container" class="shape-container">
-      <div class="square" onclick="togglefigure()"></div>
-      <div class="visualizar">
-        <input id="lado_square" type="text" placeholder="Lado" />
-        <button id="calcular">Calcular</button>
-      </div>
-    </div>
-    <div class="shape-container">
-      <div class="circle" onclick="togglefigure2()"></div>
-      <div class="visualizar2">
-        <input id="radio" type="text" placeholder="Radio" />
-        <button id="cal_r">Calcular</button>
-        <div id="circulo"></div>
-      </div>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Geométrica Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui;
+        }
+
+        body {
+            background: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #1e293b;
+            margin-bottom: 2.5rem;
+            font-size: 2.2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .contenedor-figuras {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .tarjeta {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            width: 260px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tarjeta.active {
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            background: #f8fafc;
+        }
+
+        .figura {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1rem;
+            position: relative;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .figura::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            mix-blend-mode: multiply;
+        }
+
+        .tarjeta.active .figura::after {
+            opacity: 0.1;
+        }
+
+        .cuadrado {
+            background: #3b82f6;
+            border-radius: 12px;
+        }
+
+        .cuadrado::after {
+            background: #1d4ed8;
+        }
+
+        .circulo {
+            background: #ef4444;
+            border-radius: 50%;
+        }
+
+        .circulo::after {
+            background: #b91c1c;
+        }
+
+        .triangulo {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            background: #10b981;
+        }
+
+        .triangulo::after {
+            background: #047857;
+        }
+
+        .rectangulo {
+            width: 240px;
+            height: 160px;
+            background: #8b5cf6;
+            border-radius: 8px;
+        }
+
+        .rectangulo::after {
+            background: #6d28d9;
+        }
+
+        .calculadora {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tarjeta.active .calculadora {
+            max-height: 400px;
+        }
+
+        .controles {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding-top: 1.2rem;
+        }
+
+        input {
+            padding: 0.8rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #94a3b8;
+            box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.2);
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .resultados {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 2px solid #f1f5f9;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .contenedor-figuras {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tarjeta {
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            .figura {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .rectangulo {
+                width: 200px;
+                height: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora Geométrica Interactiva</h1>
+    
+    <div class="contenedor-figuras">
+        <!-- Cuadrado -->
+        <div class="tarjeta" onclick="toggleCalculadora(this)">
+            <div class="figura cuadrado"></div>
+            <div class="calculadora">
+                <div class="controles">
+                    <input type="number" id="lado-cuadrado" placeholder="Lado (cm)">
+                    <button onclick="calcularCuadrado()">Calcular</button>
+                    <div class="resultados" id="resultado-cuadrado"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Círculo -->
+        <div class="tarjeta" onclick="toggleCalculadora(this)">
+            <div class="figura circulo"></div>
+            <div class="calculadora">
+                <div class="controles">
+                    <input type="number" id="radio-circulo" placeholder="Radio (cm)">
+                    <button onclick="calcularCirculo()">Calcular</button>
+                    <div class="resultados" id="resultado-circulo"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Triángulo -->
+        <div class="tarjeta" onclick="toggleCalculadora(this)">
+            <div class="figura triangulo"></div>
+            <div class="calculadora">
+                <div class="controles">
+                    <input type="number" id="base-triangulo" placeholder="Base (cm)">
+                    <input type="number" id="altura-triangulo" placeholder="Altura (cm)">
+                    <button onclick="calcularTriangulo()">Calcular</button>
+                    <div class="resultados" id="resultado-triangulo"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rectángulo -->
+        <div class="tarjeta" onclick="toggleCalculadora(this)">
+            <div class="figura rectangulo"></div>
+            <div class="calculadora">
+                <div class="controles">
+                    <input type="number" id="ancho-rectangulo" placeholder="Ancho (cm)">
+                    <input type="number" id="alto-rectangulo" placeholder="Alto (cm)">
+                    <button onclick="calcularRectangulo()">Calcular</button>
+                    <div class="resultados" id="resultado-rectangulo"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="shape-container">
-      <div class="triangle" onclick="togglefigure3()"></div>
-      <div class="visualizar3">
-        <input id="base_triangle" type="text" placeholder="Base" />
-        <button>Calcular</button>
-      </div>
-    </div>
+    <script>
+        let tarjetaActiva = null;
 
-    <div class="shape-container">
-      <div class="rectangle" onclick="togglefigure4()"></div>
-      <div class="visualizar4">
-        <input id="ancho_rectangle" type="text" placeholder="Ancho" />
-        <input id="largo_rectangle" type="text" placeholder="Largo" />
-        <button onclick="calcular()">Calcular</button>
-    </div>
-    </div>
+        function toggleCalculadora(elemento) {
+            if (tarjetaActiva && tarjetaActiva !== elemento) {
+                tarjetaActiva.classList.remove('active');
+            }
+            elemento.classList.toggle('active');
+            tarjetaActiva = elemento.classList.contains('active') ? elemento : null;
+        }
 
-    <script src="js\figuras.js"></script>
-  </body>
+        function calcularCuadrado() {
+            const lado = parseFloat(document.getElementById('lado-cuadrado').value);
+            if (!lado) return mostrarError('Ingresa un valor válido para el lado');
+            
+            const perimetro = lado * 4;
+            const area = lado ** 2;
+            mostrarResultado('resultado-cuadrado', perimetro, area);
+        }
+
+        function calcularCirculo() {
+            const radio = parseFloat(document.getElementById('radio-circulo').value);
+            if (!radio) return mostrarError('Ingresa un valor válido para el radio');
+            
+            const circunferencia = 2 * Math.PI * radio;
+            const area = Math.PI * radio ** 2;
+            mostrarResultado('resultado-circulo', circunferencia, area);
+        }
+
+        function calcularTriangulo() {
+            const base = parseFloat(document.getElementById('base-triangulo').value);
+            const altura = parseFloat(document.getElementById('altura-triangulo').value);
+            if (!base || !altura) return mostrarError('Completa ambos campos');
+            
+            const perimetro = base * 3;
+            const area = (base * altura) / 2;
+            mostrarResultado('resultado-triangulo', perimetro, area);
+        }
+
+        function calcularRectangulo() {
+            const ancho = parseFloat(document.getElementById('ancho-rectangulo').value);
+            const alto = parseFloat(document.getElementById('alto-rectangulo').value);
+            if (!ancho || !alto) return mostrarError('Completa ambos campos');
+            
+            const perimetro = 2 * (ancho + alto);
+            const area = ancho * alto;
+            mostrarResultado('resultado-rectangulo', perimetro, area);
+        }
+
+        function mostrarResultado(elementoId, perimetro, area) {
+            const contenedor = document.getElementById(elementoId);
+            contenedor.innerHTML = `
+                <p><strong>Perímetro:</strong> ${perimetro.toFixed(2)} cm</p>
+                <p><strong>Área:</strong> ${area.toFixed(2)} cm²</p>
+            `;
+            contenedor.style.animation = 'aparecer 0.3s ease';
+        }
+
+        function mostrarError(mensaje) {
+            alert(mensaje);
+        }
+
+        // Animación CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes aparecer {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
 </html>
