@@ -1,24 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="tres.css">
-  </head>
-  <body>
-    <p id="winner">Ganador</p>
-    <div class="table">
-      <button></button>
-      <button></button>
-      <button></button>
-      <button></button>
-      <button></button>
-      <button></button>
-      <button></button>
-      <button></button>
-      <button></button>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres en Raya Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/tres.css">
+    <style>
+        /* Estilos actualizados en el CSS */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TRES EN RAYA</h1>
+        
+        <div class="scoreboard">
+            <div class="player x-player">
+                <span>Jugador X</span>
+                <div class="score" id="xScore">0</div>
+            </div>
+            <div class="player o-player">
+                <div class="score" id="oScore">0</div>
+                <span>Jugador O</span>
+            </div>
+        </div>
+
+        <div class="game-board" id="board">
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+
+        <div class="status" id="status">Turno de X</div>
+        
+        <div class="controls">
+            <button class="btn" id="resetBtn">
+                <i class="fas fa-redo"></i> Reiniciar
+            </button>
+        </div>
     </div>
-    <script src="tres.js"></script>
-  </body>
+
+    <audio id="clickSound" src="click.wav"></audio>
+    <audio id="winSound" src="win.wav"></audio>
+    <audio id="drawSound" src="draw.wav"></audio>
+
+    <script>
+        // JavaScript actualizado
+        const CELLS = document.querySelectorAll('[data-cell]');
+        const BOARD = document.getElementById('board');
+        const STATUS = document.getElementById('status');
+        const RESET_BTN = document.getElementById('resetBtn');
+        const X_SCORE = document.getElementById('xScore');
+        const O_SCORE = document.getElementById('oScore');
+        const CLICK_SOUND = document.getElementById('clickSound');
+        const WIN_SOUND = document.getElementById('winSound');
+        const DRAW_SOUND = document.getElementById('drawSound');
+
+        let isXTurn = true;
+        let gameActive = true;
+        let xWins = 0;
+        let oWins = 0;
+
+        const WIN_COMBINATIONS = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Filas
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columnas
+            [0, 4, 8], [2, 4, 6] // Diagonales
+        ];
+
+        // Event Listeners
+        BOARD.addEventListener('click', handleMove);
+        RESET_BTN.addEventListener('click', startNewGame);
+
+        function handleMove(e) {
+            const cell = e.target;
+            if (!cell.classList.contains('cell') || 
+                cell.textContent !== '' || 
+                !gameActive) return;
+
+            const currentPlayer = isXTurn ? 'X' : 'O';
+            
+            // Animación de colocación
+            cell.style.transform = 'scale(0)';
+            setTimeout(() => {
+                cell.textContent = currentPlayer;
+                cell.style.transform = 'scale(1)';
+                CLICK_SOUND.play();
+            }, 150);
+
+            if (checkWin(currentPlayer)) {
+                handleWin(currentPlayer);
+            } else if (isDraw()) {
+                handleDraw();
+            } else {
+                switchTurn();
+            }
+        }
+
+        function checkWin(player) {
+            return WIN_COMBINATIONS.some(combination => {
+                return combination.every(index => {
+                    return CELLS[index].textContent === player;
+                });
+            });
+        }
+
+        function handleWin(player) {
+            gameActive = false;
+            WIN_SOUND.play();
+            STATUS.textContent = `¡${player} Gana!`;
+            
+            if (player === 'X') {
+                xWins++;
+                X_SCORE.textContent = xWins;
+            } else {
+                oWins++;
+                O_SCORE.textContent = oWins;
+            }
+
+            // Efecto de confeti
+            BOARD.classList.add('win-animation');
+            setTimeout(() => BOARD.classList.remove('win-animation'), 2000);
+        }
+
+        function handleDraw() {
+            gameActive = false;
+            DRAW_SOUND.play();
+            STATUS.textContent = "¡Empate!";
+        }
+
+        function switchTurn() {
+            isXTurn = !isXTurn;
+            STATUS.textContent = `Turno de ${isXTurn ? 'X' : 'O'}`;
+            BOARD.classList.toggle('x-turn', isXTurn);
+            BOARD.classList.toggle('o-turn', !isXTurn);
+        }
+
+        function isDraw() {
+            return [...CELLS].every(cell => cell.textContent !== '');
+        }
+
+        function startNewGame() {
+            CELLS.forEach(cell => {
+                cell.textContent = '';
+                cell.style.transform = '';
+                cell.classList.remove('win-cell');
+            });
+            
+            gameActive = true;
+            isXTurn = true;
+            STATUS.textContent = 'Turno de X';
+            BOARD.classList.add('x-turn');
+            BOARD.classList.remove('o-turn', 'win-animation');
+        }
+
+        // Iniciar nuevo juego al cargar
+        startNewGame();
+    </script>
+</body>
 </html>
